@@ -215,30 +215,24 @@
     position: absolute;
     inset: 0;
     border-radius: 50%;
-    background: conic-gradient(from 0deg, rgba(249,115,22,0.5) 0deg, rgba(249,115,22,0.14) 50deg, rgba(0,0,0,0) 95deg, rgba(0,0,0,0) 360deg);
+    background: conic-gradient(from 0deg, rgba(0,0,0,0) 0deg, rgba(0,0,0,0) 290deg, rgba(249,115,22,0.06) 325deg, rgba(249,115,22,0.28) 360deg);
+    animation: spin 3.4s linear infinite;
+    pointer-events: none;
+  }
+
+  /* тонкий луч развёртки — как на настоящем радаре */
+  .beam {
+    position: absolute;
+    left: calc(50% - 0.5px);
+    top: 7%;
+    width: 1.5px;
+    height: 43%;
+    background: linear-gradient(to top, rgba(251,146,60,0.95), rgba(251,146,60,0.25));
+    transform-origin: 50% 100%;
     animation: spin 3.4s linear infinite;
     pointer-events: none;
   }
   @keyframes spin { to { transform: rotate(360deg); } }
-
-  /* неопознанные объекты: мигают и исчезают */
-  .blip {
-    position: absolute;
-    width: 7px; height: 7px;
-    border-radius: 50%;
-    background: #fb923c;
-    box-shadow: 0 0 12px rgba(249,115,22,0.9);
-    opacity: 0;
-  }
-  .blip.b1 { left: 31%; top: 34%; animation: blipGhost 3.4s ease-out infinite; }
-  .blip.b2 { left: 63%; top: 60%; animation: blipGhost 3.4s ease-out infinite 1.7s; }
-  @keyframes blipGhost {
-    0%, 8%   { opacity: 0; transform: scale(0.4); }
-    13%      { opacity: 1; transform: scale(1.2); }
-    20%      { opacity: 0.25; transform: scale(1); }
-    26%      { opacity: 0.7; }
-    34%, 100%{ opacity: 0; transform: scale(0.5); }
-  }
 
   .radar-center {
     position: absolute;
@@ -540,8 +534,7 @@
     <div class="crosshair-h"></div>
     <div class="crosshair-v"></div>
     <div class="sweep"></div>
-    <span class="blip b1"></span>
-    <span class="blip b2"></span>
+    <div class="beam"></div>
     <div class="radar-center"></div>
   </div>
   <div class="coords tl"><span>59.9N — 30.3E</span> <span>▲ ЗАШИФРОВАНО</span></div>
